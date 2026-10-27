@@ -13,3 +13,24 @@ nav{width:min(1180px,100%);margin:0 auto;display:flex;align-items:center;justify
 @media(max-width:640px){.hero{padding-left:18px;padding-right:18px}.nav{align-items:flex-start}.brand{white-space:nowrap;font-size:.9rem}.nav div{justify-content:flex-end;flex-wrap:wrap;gap:8px 12px}.nav div a{font-size:.7rem}.hero-content{padding:65px 0 85px}.hero h1{font-size:clamp(3rem,13vw,5rem)}.cards{grid-template-columns:1fr}.rose{grid-column:auto}.card{min-height:unset;padding:26px}.card>p{font-size:1.25rem}.carousel{padding:0 34px}.arrow{width:33px;height:33px;font-size:1.45rem}.quiz fieldset p,.quiz label{margin-left:0}.quiz input{width:100%;margin-left:0}.progress{font-size:.57rem;letter-spacing:.04em}}
 @media(max-width:380px){.nav{display:block}.nav div{justify-content:center;margin-top:15px}.hero-content{padding-top:50px}.hero h1{font-size:2.9rem}.section{padding-left:16px;padding-right:16px}.quiz{padding:20px 16px}.quiz legend{gap:9px;font-size:1.15rem}.quiz legend b{flex-basis:30px;width:30px;height:30px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+
+/* Ajuste das fotos do carrossel */
+.slide img,
+.couple-photo {
+  display: block;
+  width: 100%;
+  height: min(65vh, 560px);
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
+  background: #fff3f5;
+}
+
+/* Celulares, incluindo iPhone 16 */
+@media (max-width: 640px) {
+  .slide img,
+  .couple-photo {
+    height: min(60svh, 460px);
+  }
+}
