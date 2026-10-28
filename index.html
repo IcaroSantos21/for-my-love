@@ -3,56 +3,85 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#fff0f5">
-<title>Para o meu beee ❤️</title>
+<meta name="theme-color" content="#dff0fc">
+<title>Pra você, meu beee 💙</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="script.js" defer></script>
 </head>
-<body>
-<div class="floating" aria-hidden="true">♡　♥　♡　♥　♡</div>
-<header class="hero" id="inicio">
-  <nav><a class="brand" href="#inicio">para o meu beee <span>♥</span></a>
-  <div><a href="#mensagens">cartinhas</a><a href="#fotos">fotos</a><a href="#quiz">quiz do casal</a></div></nav>
-  <div class="hero-content"><p class="eyebrow">um cantinho todinho nosso</p>
-    <h1>Meu lugar<br>favorito é <em>com você.</em></h1>
-    <p>Fiz esse pedacinho da internet para te lembrar de uma coisa que meu coração sente todos os dias: <strong>eu sou muito feliz por ter você.</strong></p>
-    <a class="button" href="#mensagens">Abrir minhas cartinhas ♡</a>
-  </div>
-  <span class="scroll-note">role devagarinho ↓</span>
-</header>
+<body class="trancado">
+
+<div class="envelope-tela" id="envelope">
+  <button class="envelope" id="abrir" type="button" aria-label="Abrir a carta">
+    <span class="aba"></span>
+    <span class="selo">💙</span>
+    <span class="para">pra você, beee</span>
+  </button>
+  <p class="dica">toca no envelope pra abrir</p>
+</div>
+
 <main>
-<section class="section" id="mensagens">
-  <div class="heading"><p class="eyebrow">escritas pensando em você</p><h2>Coisas que meu coração<br><em>quer te contar</em></h2><p>Se eu pudesse, te lembraria disso em todos os dias, de todas as formas. 💌</p></div>
-  <div class="cards">
-    <article class="card peach"><div class="card-top">💌 <small>01 / com carinho</small></div><p>Oi meu beee, estou aqui para dizer que te amo, e você é a melhor coisa que me aconteceu, você apareceu na minha vida pra fazer ela mais feliz, você não tem ideia do quanto me sinto feliz ao seu lado.</p><footer>você deixa tudo mais bonito ♡</footer></article>
-    <article class="card lilac"><div class="card-top">🌷 <small>02 / cada instante</small></div><p>Eu amo cada minuto com você, cada segundo, cada momento, cada beijo, cada abraço, cada cheiro, você é incrivel, tudo que eu sempre pedi para deus</p><footer>eu escolheria você de novo e de novo ♡</footer></article>
-    <article class="card rose"><div class="card-top">🎀 <small>03 / minha princesa</small></div><p>Você é linda, maravilhosa, a mais cheirosa, e perfeita mulher, eu sou muito sortudo de ter você comigo meu amor, fico muito feliz por td, e quero viver mto mais com vc, estou mto ansioso para o dia que estivermos assumidos de vez, eu te amo, e você é incrivel, só tenho elogios pra você minha princesa</p><footer>meu presente favorito é ter você 💗</footer></article>
-  </div>
-</section>
-<section class="big-love"><p>uma coisa que nunca vai ser pequena</p><div class="giant">EU TE AMO</div><div class="line">♡ ───────── ♥ ───────── ♡</div><p class="big-note">em todos os jeitos, em todos os dias,<br>em cada versão da nossa história.</p></section>
-<section class="section gallery-section" id="fotos">
-  <div class="heading"><p class="eyebrow">pequenos pedaços da nossa história</p><h2>Nós dois, <em>em lembranças</em></h2><p>Um espaço para guardar aqueles momentos que dão vontade de viver tudo outra vez.</p></div>
-  <div class="carousel" aria-label="Carrossel de fotos do casal">
-    <button class="arrow prev" type="button" aria-label="Foto anterior">‹</button>
-    <div class="window"><div class="track">
-      <figure class="slide"><img class="couple-photo" src="fotos/foto-1.jpeg" alt="Nós dois em um momento especial"><figcaption>01 · um momento nosso</figcaption></figure>
-      <figure class="slide"><img class="couple-photo" src="fotos/foto-2.jpeg" alt="Nós dois em um momento especial"><figcaption>02 · meu sorriso preferido</figcaption></figure>
-      <figure class="slide"><img class="couple-photo" src="fotos/foto-3.jpeg" alt="Nós dois em um momento especial"><figcaption>03 · e que venham muitos outros</figcaption></figure>
-    </div></div>
-    <button class="arrow next" type="button" aria-label="Próxima foto">›</button>
-  </div>
-  <div class="dots" role="group" aria-label="Escolher foto"><button class="dot active" aria-label="Foto 1" aria-pressed="true"></button><button class="dot" aria-label="Foto 2" aria-pressed="false"></button><button class="dot" aria-label="Foto 3" aria-pressed="false"></button></div>
-  
-</section>
-<section class="section" id="quiz">
-  <div class="heading"><p class="eyebrow">será que você lembra?</p><h2>Quiz do <em>nosso amor</em></h2><p>Quero ver se a minha princesa lembra dos detalhes da nossa história. 💘</p></div>
-  <form class="quiz" id="quiz"><div class="progress">PERGUNTAS DO CASAL <span>♡ feito para nós</span></div>
-    <fieldset><legend><b>01</b> Quando foi que a gente começou a conversar?</legend><p>Vale lembrar a data, o mês ou até o contexto. 💭</p><label for="a1">A nossa data</label><input id="a1" name="a1" placeholder="Ex.: 14 de fevereiro..." autocomplete="off"></fieldset>
-    <fieldset><legend><b>02</b> Quando foi a primeira vez que a gente saiu?</legend><p>Aquele primeiro rolê especial de nós dois. 🥹</p><label for="a2">A nossa primeira saída</label><input id="a2" name="a2" placeholder="Conta a data ou onde foi..." autocomplete="off"></fieldset>
-    <button class="button submit" type="submit">Guardar minhas respostas ♡</button><p id="feedback" role="status" aria-live="polite"></p><small>As respostas ficam só nesta página — não são enviadas para lugar nenhum.</small>
-  </form>
-</section>
-<section class="final"><div class="heart">♥</div><p class="eyebrow">e isso é só o começo...</p><h2>Quero viver muitos<br><em>capítulos com você.</em></h2><p>Obrigado por ser você, meu beee. Que a gente nunca perca a vontade de se escolher, de rir junto e de criar lembranças lindas.</p><strong>com amor, sempre ♡</strong></section>
+  <section class="abertura">
+    <p class="pequeno">uma carta que fiz pra você</p>
+    <h1>Oi, meu beee 💙</h1>
+    <p class="lead">Fiz esse cantinho pra te dizer umas coisas que eu sinto todo dia. Lê com calma, tá?</p>
+  </section>
+
+  <section class="carta" aria-label="Carta">
+    <p>Passei aqui pra te falar que vc é a melhor coisa que já apareceu na minha vida. Eu nem sei explicar direito o tanto que fico feliz do seu lado, mas tentei colocar td aqui pra vc ler.</p>
+    <p>Cada minutinho com vc vale mto pra mim. O seu abraço, o seu beijo, o seu cheiro, td em vc me deixa bobo. Vc é incrivel, é exatamente o que eu sempre pedi pra deus.</p>
+    <p>Vc é linda, perfeita e a mais cheirosa que existe, e eu me sinto mto sortudo de ter vc comigo, meu amor. Quero viver mto mais coisas do seu lado e to ansioso demais pro dia que a gente se assumir de vez.</p>
+    <p class="assina">com amor, seu bobo 💙</p>
+  </section>
+
+  <section class="especial">
+    <h2>Vc é especial demais pra mim</h2>
+    <p>Vc não é só mais uma pessoa na minha vida, vc mudou meus dias. Tudo fica mais leve e mais bonito quando vc tá por perto.</p>
+    <p class="destaque">Eu quero te fazer feliz sempre.</p>
+    <ul class="promessas">
+      <li>cuidar de vc em todo momento</li>
+      <li>te fazer rir até nos dias ruins</li>
+      <li>ficar do seu lado, aconteça o que acontecer</li>
+      <li>nunca deixar vc esquecer o quanto é amada</li>
+    </ul>
+  </section>
+
+  <section class="fotos" aria-label="Fotos nossas">
+    <h2>Nós dois</h2>
+    <p class="pequeno">toca na foto pra ver a próxima</p>
+    <div class="pilha" id="pilha">
+      <figure class="polaroid"><img src="fotos/foto-1.jpeg" alt="Nós dois em um momento especial"><figcaption>um momento nosso</figcaption></figure>
+      <figure class="polaroid"><img src="fotos/foto-2.jpeg" alt="Nós dois em um momento especial"><figcaption>meu sorriso preferido</figcaption></figure>
+      <figure class="polaroid"><img src="fotos/foto-3.jpeg" alt="Nós dois em um momento especial"><figcaption>e que venham mtos outros</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="pedido" id="pedido">
+    <h2>Você quer namorar comigo?</h2>
+    <div class="botoes">
+      <button class="sim" id="sim" type="button">Sim 💙</button>
+      <button class="nao" id="nao" type="button">Não</button>
+    </div>
+    <p class="piada" id="piada" role="status" aria-live="polite"></p>
+    <p class="resposta" id="resposta" hidden>Ela disse sim!! 🎉 Agora é oficial, minha princesa. Eu te amo mto 💙</p>
+  </section>
 </main>
-<footer class="site-footer">feito com amor e um tantinho de vergonha de ser tão apaixonado <span>♥</span></footer>
-</body></html>
+
+<footer>
+  <span>feito com amor e um tantinho de vergonha</span>
+  <button class="coracao" id="segredo" type="button" aria-label="coração">♥</button>
+</footer>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-caixa">
+    <p>Achou o segredinho! 🤫</p>
+    <p>Eu te amo mais do que consigo escrever aqui. Me manda um "achei" que eu te devo um beijo 💙</p>
+    <button type="button" id="fechar">fechar</button>
+  </div>
+</div>
+
+<div class="chuva" id="chuva" aria-hidden="true"></div>
+</body>
+</html>
