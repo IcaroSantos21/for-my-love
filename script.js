@@ -1,33 +1,90 @@
 (() => {
-  const track = document.querySelector('.track');
-  const slides = [...document.querySelectorAll('.slide')];
-  const dots = [...document.querySelectorAll('.dot')];
-  let current = 0;
-  function show(index) {
-    current = (index + slides.length) % slides.length;
-    track.style.transform = `translateX(-${current * 100}%)`;
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === current);
-      dot.setAttribute('aria-pressed', String(i === current));
-    });
-  }
-  document.querySelector('.prev').addEventListener('click', () => show(current - 1));
-  document.querySelector('.next').addEventListener('click', () => show(current + 1));
-  dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+  const $ = (id) => document.getElementById(id);
 
-  // As datas são pessoais: não inventamos respostas certas.
-  // Este formulário apenas verifica os campos e não envia dados a um servidor.
-  const quiz = document.getElementById('quiz');
-  const feedback = document.getElementById('feedback');
-  quiz.addEventListener('submit', event => {
-    event.preventDefault();
-    const first = document.getElementById('a1');
-    const second = document.getElementById('a2');
-    if (!first.value.trim() || !second.value.trim()) {
-      feedback.textContent = 'Preenche as duas lembranças, meu amorzinho. 💗';
-      (!first.value.trim() ? first : second).focus();
-      return;
+  // chuva de corações
+  function chuva(qtd = 40) {
+    const box = $('chuva');
+    const emojis = ['💙', '🩵', '♡', '💌'];
+    for (let i = 0; i < qtd; i++) {
+      const s = document.createElement('span');
+      s.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      s.style.left = Math.random() * 100 + '%';
+      s.style.fontSize = 16 + Math.random() * 22 + 'px';
+      s.style.animationDuration = 3 + Math.random() * 3 + 's';
+      s.style.animationDelay = Math.random() * 1.2 + 's';
+      box.appendChild(s);
+      setTimeout(() => s.remove(), 7500);
     }
-    feedback.textContent = 'Respostas guardadas com carinho! O mais importante é a nossa história. 💞';
+  }
+
+  // envelope
+  $('abrir').addEventListener('click', () => {
+    $('envelope').classList.add('aberto');
+    document.body.classList.remove('trancado');
+    chuva(18);
   });
+
+  // pilha de fotos
+  const fotos = [...document.querySelectorAll('.polaroid')];
+  let ordem = fotos.map((_, i) => i);
+  function pintaPilha() {
+    ordem.forEach((fotoIdx, pos) => { fotos[fotoIdx].dataset.pos = pos; });
+  }
+  pintaPilha();
+  $('pilha').addEventListener('click', () => {
+    ordem.push(ordem.shift());
+    pintaPilha();
+  });
+
+  // botão "Não" que foge (é só brincadeira)
+  const nao = $('nao');
+  const sim = $('sim');
+  const piada = $('piada');
+  const frases = [
+    'Ué, o botão fugiu 😅',
+    'Quase! Tenta de novo 😏',
+    'Esse botão tá com defeito, juro',
+    'Vc tá tentando clicar no não? Sério?',
+    'Desiste, o sim tá ficando maior 👀',
+    'Não tem como, o destino já decidiu 💙',
+    'Vai, clica no sim logo, bobinha'
+  ];
+  let tentativas = 0;
+
+  function foge(e) {
+    if (e) e.preventDefault();
+    tentativas++;
+    const w = nao.offsetWidth, h = nao.offsetHeight;
+    const maxX = window.innerWidth - w - 12;
+    const maxY = window.innerHeight - h - 12;
+    nao.classList.add('solto');
+    nao.style.left = Math.max(12, Math.random() * maxX) + 'px';
+    nao.style.top = Math.max(12, Math.random() * maxY) + 'px';
+    sim.style.transform = 'scale(' + Math.min(1 + tentativas * 0.08, 1.7) + ')';
+    piada.textContent = frases[Math.min(tentativas - 1, frases.length - 1)];
+  }
+  ['pointerenter', 'pointerdown', 'touchstart', 'focus'].forEach((ev) => nao.addEventListener(ev, foge));
+  nao.addEventListener('click', (e) => { e.preventDefault(); foge(); });
+
+  sim.addEventListener('click', () => {
+    $('resposta').hidden = false;
+    nao.hidden = true;
+    sim.hidden = true;
+    piada.textContent = '';
+    chuva(70);
+  });
+
+  // easter egg: toca 5 vezes no coraçãozinho do rodapé
+  let toques = 0, timer;
+  $('segredo').addEventListener('click', () => {
+    toques++;
+    clearTimeout(timer);
+    timer = setTimeout(() => { toques = 0; }, 1500);
+    if (toques >= 5) {
+      toques = 0;
+      $('modal').hidden = false;
+      chuva(50);
+    }
+  });
+  $('fechar').addEventListener('click', () => { $('modal').hidden = true; });
 })();
