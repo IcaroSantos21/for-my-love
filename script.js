@@ -1,7 +1,6 @@
 (() => {
   const $ = (id) => document.getElementById(id);
 
-  // chuva de corações
   function chuva(qtd = 40) {
     const box = $('chuva');
     const emojis = ['💙', '🩵', '♡', '💌'];
@@ -17,69 +16,51 @@
     }
   }
 
-  // envelope
-  $('abrir').addEventListener('click', () => {
-    $('envelope').classList.add('aberto');
-    document.body.classList.remove('trancado');
-    chuva(18);
-  });
+  // conversa: cada mensagem aparece depois de "digitando..."
+  const msgs = [...document.querySelectorAll('#conversa .msg')];
+  const status = document.querySelector('.topo small');
+  let i = 0, terminou = false, timer;
 
-  // pilha de fotos
-  const fotos = [...document.querySelectorAll('.polaroid')];
-  let ordem = fotos.map((_, i) => i);
-  function pintaPilha() {
-    ordem.forEach((fotoIdx, pos) => { fotos[fotoIdx].dataset.pos = pos; });
+  function terminar() {
+    if (terminou) return;
+    terminou = true;
+    clearTimeout(timer);
+    document.querySelectorAll('.digitando').forEach((d) => d.remove());
+    msgs.forEach((m) => { m.hidden = false; });
+    status.textContent = 'online';
+    chuva(25);
+    $('pular').hidden = true;
+    $('depois').hidden = false;
+    setTimeout(() => $('depois').scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
   }
-  pintaPilha();
-  $('pilha').addEventListener('click', () => {
-    ordem.push(ordem.shift());
-    pintaPilha();
-  });
 
-  // botão "Não" que foge (é só brincadeira)
-  const nao = $('nao');
-  const sim = $('sim');
-  const piada = $('piada');
-  const frases = [
-    'Ué, o botão fugiu 😅',
-    'Quase! Tenta de novo 😏',
-    'Esse botão tá com defeito, juro',
-    'Vc tá tentando clicar no não? Sério?',
-    'Desiste, o sim tá ficando maior 👀',
-    'Não tem como, o destino já decidiu 💙',
-    'Vai, clica no sim logo, bobinha'
-  ];
-  let tentativas = 0;
-
-  function foge(e) {
-    if (e) e.preventDefault();
-    tentativas++;
-    const w = nao.offsetWidth, h = nao.offsetHeight;
-    const maxX = window.innerWidth - w - 12;
-    const maxY = window.innerHeight - h - 12;
-    nao.classList.add('solto');
-    nao.style.left = Math.max(12, Math.random() * maxX) + 'px';
-    nao.style.top = Math.max(12, Math.random() * maxY) + 'px';
-    sim.style.transform = 'scale(' + Math.min(1 + tentativas * 0.08, 1.7) + ')';
-    piada.textContent = frases[Math.min(tentativas - 1, frases.length - 1)];
+  function proxima() {
+    if (terminou) return;
+    if (i >= msgs.length) return terminar();
+    const dots = document.createElement('div');
+    dots.className = 'digitando';
+    dots.innerHTML = '<i></i><i></i><i></i>';
+    msgs[i].before(dots);
+    const tam = msgs[i].textContent.length;
+    timer = setTimeout(() => {
+      dots.remove();
+      msgs[i].hidden = false;
+      msgs[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      i++;
+      timer = setTimeout(proxima, 500);
+    }, Math.min(700 + tam * 18, 1800));
   }
-  ['pointerenter', 'pointerdown', 'touchstart', 'focus'].forEach((ev) => nao.addEventListener(ev, foge));
-  nao.addEventListener('click', (e) => { e.preventDefault(); foge(); });
 
-  sim.addEventListener('click', () => {
-    $('resposta').hidden = false;
-    nao.hidden = true;
-    sim.hidden = true;
-    piada.textContent = '';
-    chuva(70);
-  });
+  const reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $('pular').addEventListener('click', terminar);
+  if (reduz) terminar(); else proxima();
 
-  // easter egg: toca 5 vezes no coraçãozinho do rodapé
-  let toques = 0, timer;
+  // easter egg: toca 5 vezes na foto de perfil do topo
+  let toques = 0, t2;
   $('segredo').addEventListener('click', () => {
     toques++;
-    clearTimeout(timer);
-    timer = setTimeout(() => { toques = 0; }, 1500);
+    clearTimeout(t2);
+    t2 = setTimeout(() => { toques = 0; }, 1500);
     if (toques >= 5) {
       toques = 0;
       $('modal').hidden = false;
