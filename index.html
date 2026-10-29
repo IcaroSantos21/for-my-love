@@ -3,76 +3,55 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#dff0fc">
-<title>Pra você, meu beee 💙</title>
+<meta name="theme-color" content="#a9d6f5">
+<title>Mensagem pra você, bee 💙</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=3">
+<script src="script.js?v=3" defer></script>
 </head>
-<body class="trancado">
+<body>
+<div class="app">
 
-<div class="envelope-tela" id="envelope">
-  <button class="envelope" id="abrir" type="button" aria-label="Abrir a carta">
-    <span class="aba"></span>
-    <span class="selo">💙</span>
-    <span class="para">pra você, beee</span>
-  </button>
-  <p class="dica">toca no envelope pra abrir</p>
+  <header class="topo">
+    <button class="avatar" id="segredo" type="button" aria-label="foto de perfil">💙</button>
+    <div><strong>meu bee</strong><small>digitando pra vc...</small></div>
+  </header>
+
+  <section class="conversa" id="conversa" aria-label="Mensagens">
+    <p class="dia">hoje</p>
+    <p class="msg" hidden>Oiii bee 💙</p>
+    <p class="msg" hidden>sei que vc tá irritadinha e cansada essa semana, meu amor</p>
+    <p class="msg" hidden>mas eu vim aqui dizer que to com mto sdd de vc</p>
+    <p class="msg" hidden>e tbm que eu te amo mto, mesmo vc estressada assim</p>
+    <p class="msg" hidden>vc é incrivel, a mulher que eu quero pra minha vida sempre</p>
+    <p class="msg" hidden>qro que vc fique bem meu amor, qro cuidar de vc</p>
+    <p class="msg" hidden>e n me importa se vc ta estressada ou irritada, eu vou cuidar de vc sempre</p>
+    <p class="msg" hidden>vc é linda, a mais cheirosa e perfeita, e eu sou mto sortudo de ter vc comigo</p>
+    <p class="msg" hidden>cada abraço, cada beijo e cada cheiro seu é td que eu sempre pedi pra deus</p>
+    <p class="msg" hidden>vc é especial demais pra mim, e eu quero te fazer feliz sempre 💙</p>
+    <p class="msg" hidden>to aguardando o dia que a gente vai assumir nosso relacionamento pro mundoooo todoo hihihi</p>
+  </section>
+
+  <div class="depois" id="depois" hidden>
+    <section class="momentos" aria-label="Fotos nossas">
+      <p class="msg fixa">olha como a gente é lindo junto 🥹</p>
+      <div class="tira">
+        <figure><img src="fotos/foto-1.jpeg" alt="Nós dois em um momento especial"><figcaption>um momento nosso</figcaption></figure>
+        <figure><img src="fotos/foto-2.jpeg" alt="Nós dois em um momento especial"><figcaption>meu sorriso preferido</figcaption></figure>
+        <figure><img src="fotos/foto-3.jpeg" alt="Nós dois em um momento especial"><figcaption>e que venham mtos outros</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="final">
+      <p class="msg fixa">e eu não podia terminar sem falar uma coisa...</p>
+      <h2>Eu amo minha estressadinha hihihi 💙</h2>
+    </section>
+  </div>
+
+  <button class="pular" id="pular" type="button">pular ›</button>
 </div>
-
-<main>
-  <section class="abertura">
-    <p class="pequeno">uma carta que fiz pra você</p>
-    <h1>Oi, meu beee 💙</h1>
-    <p class="lead">Fiz esse cantinho pra te dizer umas coisas que eu sinto todo dia. Lê com calma, tá?</p>
-  </section>
-
-  <section class="carta" aria-label="Carta">
-    <p>Passei aqui pra te falar que vc é a melhor coisa que já apareceu na minha vida. Eu nem sei explicar direito o tanto que fico feliz do seu lado, mas tentei colocar td aqui pra vc ler.</p>
-    <p>Cada minutinho com vc vale mto pra mim. O seu abraço, o seu beijo, o seu cheiro, td em vc me deixa bobo. Vc é incrivel, é exatamente o que eu sempre pedi pra deus.</p>
-    <p>Vc é linda, perfeita e a mais cheirosa que existe, e eu me sinto mto sortudo de ter vc comigo, meu amor. Quero viver mto mais coisas do seu lado e to ansioso demais pro dia que a gente se assumir de vez.</p>
-    <p class="assina">com amor, seu bobo 💙</p>
-  </section>
-
-  <section class="especial">
-    <h2>Vc é especial demais pra mim</h2>
-    <p>Vc não é só mais uma pessoa na minha vida, vc mudou meus dias. Tudo fica mais leve e mais bonito quando vc tá por perto.</p>
-    <p class="destaque">Eu quero te fazer feliz sempre.</p>
-    <ul class="promessas">
-      <li>cuidar de vc em todo momento</li>
-      <li>te fazer rir até nos dias ruins</li>
-      <li>ficar do seu lado, aconteça o que acontecer</li>
-      <li>nunca deixar vc esquecer o quanto é amada</li>
-    </ul>
-  </section>
-
-  <section class="fotos" aria-label="Fotos nossas">
-    <h2>Nós dois</h2>
-    <p class="pequeno">toca na foto pra ver a próxima</p>
-    <div class="pilha" id="pilha">
-      <figure class="polaroid"><img src="fotos/foto-1.jpeg" alt="Nós dois em um momento especial"><figcaption>um momento nosso</figcaption></figure>
-      <figure class="polaroid"><img src="fotos/foto-2.jpeg" alt="Nós dois em um momento especial"><figcaption>meu sorriso preferido</figcaption></figure>
-      <figure class="polaroid"><img src="fotos/foto-3.jpeg" alt="Nós dois em um momento especial"><figcaption>e que venham mtos outros</figcaption></figure>
-    </div>
-  </section>
-
-  <section class="pedido" id="pedido">
-    <h2>Você quer namorar comigo?</h2>
-    <div class="botoes">
-      <button class="sim" id="sim" type="button">Sim 💙</button>
-      <button class="nao" id="nao" type="button">Não</button>
-    </div>
-    <p class="piada" id="piada" role="status" aria-live="polite"></p>
-    <p class="resposta" id="resposta" hidden>Ela disse sim!! 🎉 Agora é oficial, minha princesa. Eu te amo mto 💙</p>
-  </section>
-</main>
-
-<footer>
-  <span>feito com amor e um tantinho de vergonha</span>
-  <button class="coracao" id="segredo" type="button" aria-label="coração">♥</button>
-</footer>
 
 <div class="modal" id="modal" hidden>
   <div class="modal-caixa">
@@ -81,7 +60,6 @@
     <button type="button" id="fechar">fechar</button>
   </div>
 </div>
-
 <div class="chuva" id="chuva" aria-hidden="true"></div>
 </body>
 </html>
