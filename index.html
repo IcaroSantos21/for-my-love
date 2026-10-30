@@ -3,63 +3,95 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#a9d6f5">
-<title>Mensagem pra você, bee 💙</title>
+<meta name="theme-color" content="#cfe8fb">
+<title>Bom dia, meu amor 💙</title>
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
-<script src="script.js?v=3" defer></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="script.js?v=5" defer></script>
 </head>
 <body>
-<div class="app">
+<div class="flutuantes" id="flutuantes" aria-hidden="true"></div>
 
-  <header class="topo">
-    <button class="avatar" id="segredo" type="button" aria-label="foto de perfil">💙</button>
-    <div><strong>meu bee</strong><small>digitando pra vc...</small></div>
-  </header>
+<header class="hero">
+  <p class="mini">sexta-feira 💙</p>
+  <h1>Bom dia,<br>meu amor</h1>
+  <p class="lead">Que seu dia hoje seja repleto de momentos bons.
+    <button class="segredo" data-msg="mim é o seu cheirinho 🌸" aria-label="coração escondido">💙</button>
+  </p>
+  <a class="desce" href="#dia">desliza pra baixo ↓</a>
+</header>
 
-  <section class="conversa" id="conversa" aria-label="Mensagens">
-    <p class="dia">hoje</p>
-    <p class="msg" hidden>Oiii bee 💙</p>
-    <p class="msg" hidden>sei que vc tá irritadinha e cansada essa semana, meu amor</p>
-    <p class="msg" hidden>mas eu vim aqui dizer que to com mto sdd de vc</p>
-    <p class="msg" hidden>e tbm que eu te amo mto, mesmo vc estressada assim</p>
-    <p class="msg" hidden>vc é incrivel, a mulher que eu quero pra minha vida sempre</p>
-    <p class="msg" hidden>qro que vc fique bem meu amor, qro cuidar de vc</p>
-    <p class="msg" hidden>e n me importa se vc ta estressada ou irritada, eu vou cuidar de vc sempre</p>
-    <p class="msg" hidden>vc é linda, a mais cheirosa e perfeita, e eu sou mto sortudo de ter vc comigo</p>
-    <p class="msg" hidden>cada abraço, cada beijo e cada cheiro seu é td que eu sempre pedi pra deus</p>
-    <p class="msg" hidden>vc é especial demais pra mim, e eu quero te fazer feliz sempre 💙</p>
-    <p class="msg" hidden>to aguardando o dia que a gente vai assumir nosso relacionamento pro mundoooo todoo hihihi</p>
+<main>
+  <section class="bloco reveal" id="dia">
+    <h2>Pro seu dia de hoje</h2>
+    <div class="cards">
+      <article><span>✨</span><h3>Momentos bons</h3><p>que seu dia seja cheio deles, meu amor</p></article>
+      <article><span>🎈</span><h3>Mta diversão</h3><p>que vc se divirta mto hoje</p></article>
+      <article><span>💼</span><h3>Tudo certo no trabalho</h3><p>que dê td certo, minha linda</p></article>
+    </div>
   </section>
 
-  <div class="depois" id="depois" hidden>
-    <section class="momentos" aria-label="Fotos nossas">
-      <p class="msg fixa">olha como a gente é lindo junto 🥹</p>
-      <div class="tira">
-        <figure><img src="fotos/foto-1.jpeg" alt="Nós dois em um momento especial"><figcaption>um momento nosso</figcaption></figure>
-        <figure><img src="fotos/foto-2.jpeg" alt="Nós dois em um momento especial"><figcaption>meu sorriso preferido</figcaption></figure>
-        <figure><img src="fotos/foto-3.jpeg" alt="Nós dois em um momento especial"><figcaption>e que venham mtos outros</figcaption></figure>
-      </div>
-    </section>
+  <section class="bloco torcida reveal">
+    <p class="mini">uma promessa</p>
+    <h2>Vou estar sempre torcendo por vc</h2>
+    <p>Pode contar comigo, tô aqui acreditando no seu potencial, minha linda. Vc é capaz de td que qrer.</p>
+  </section>
 
-    <section class="final">
-      <p class="msg fixa">e eu não podia terminar sem falar uma coisa...</p>
-      <h2>Eu amo minha estressadinha hihihi 💙</h2>
-    </section>
-  </div>
+  <section class="bloco sextou reveal">
+    <h2>Hoje sextou 🎉</h2>
+    <p>Daqui a pouquinho vamos passar dois dias juntinhos, bem agarradinhos.
+      <button class="segredo" data-msg="mim ama vc 💙" aria-label="coração escondido">💙</button>
+    </p>
+    <div class="dias">
+      <div><b>domingo</b><span>juntinhos</span></div>
+      <div><b>segunda</b><span>agarradinhos</span></div>
+    </div>
+    <p class="pequeno">mim espera que vc esteja bem e q tenha descansado, meu amor.</p>
+  </section>
 
-  <button class="pular" id="pular" type="button">pular ›</button>
-</div>
+  <section class="bloco incrivel reveal">
+    <h2>Saiba que vc é incrivel</h2>
+    <p>e eu não vejo a hora de viver momentos com vc. Eu qro:</p>
+    <ul>
+      <li>aproveitar cada momento com vc</li>
+      <li>conhecer coisas novas com vc</li>
+      <li>conhecer lugares novos com vc</li>
+      <li>qro q seja tudo com vc 💙</li>
+    </ul>
+  </section>
 
+  <section class="bloco fotos reveal" aria-label="Fotos nossas">
+    <h2>Nós dois</h2>
+    <div class="tira">
+      <figure><img src="fotos/foto-1.jpeg" alt="Nós dois em um momento especial" loading="lazy"><figcaption>um momento nosso</figcaption></figure>
+      <figure><img src="fotos/foto-2.jpeg" alt="Nós dois em um momento especial" loading="lazy"><figcaption>meu sorriso preferido</figcaption></figure>
+      <figure><img src="fotos/foto-3.jpeg" alt="Nós dois em um momento especial" loading="lazy"><figcaption>e que venham mtos outros</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="bloco final reveal">
+    <h2>Eu te amo,<br>meu amor</h2>
+    <p>e não qro q vc vá embora 💙</p>
+  </section>
+</main>
+
+<footer>
+  <p>tem 3 segredinhos escondidos por aqui 👀</p>
+  <p class="contador" id="contador">0 de 3 encontrados</p>
+  <button class="segredo grande" data-msg="mim não ve a hora de usarmos nossa aliança 💍" aria-label="coração escondido">💙</button>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="modal" id="modal" hidden>
   <div class="modal-caixa">
-    <p>Achou o segredinho! 🤫</p>
-    <p>Eu te amo mais do que consigo escrever aqui. Me manda um "achei" que eu te devo um beijo 💙</p>
+    <p class="anel">💍</p>
+    <p>Vc achou os 3 segredinhos!</p>
+    <p>Prometo que um dia a gente usa a aliança, e eu vou te amar em cada dia dessa vida 💙</p>
     <button type="button" id="fechar">fechar</button>
   </div>
 </div>
-<div class="chuva" id="chuva" aria-hidden="true"></div>
 </body>
 </html>
