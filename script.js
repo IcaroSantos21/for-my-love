@@ -1,71 +1,62 @@
 (() => {
-  const $ = (id) => document.getElementById(id);
+  const reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function chuva(qtd = 40) {
-    const box = $('chuva');
-    const emojis = ['💙', '🩵', '♡', '💌'];
+  // corações flutuando no fundo
+  if (!reduz) {
+    const box = document.getElementById('flutuantes');
+    ['💙', '🩵', '♡', '✨', '💙', '🩵', '♡', '💙'].forEach((e, i) => {
+      const s = document.createElement('span');
+      s.textContent = e;
+      s.style.left = 5 + i * 12 + Math.random() * 6 + '%';
+      s.style.fontSize = 14 + Math.random() * 16 + 'px';
+      s.style.animationDuration = 14 + Math.random() * 10 + 's';
+      s.style.animationDelay = -Math.random() * 14 + 's';
+      box.appendChild(s);
+    });
+  }
+
+  // aparece ao rolar
+  const itens = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((lista) => {
+      lista.forEach((l) => { if (l.isIntersecting) { l.target.classList.add('visivel'); obs.unobserve(l.target); } });
+    }, { threshold: 0.15 });
+    itens.forEach((i) => obs.observe(i));
+  } else {
+    itens.forEach((i) => i.classList.add('visivel'));
+  }
+
+  // easter eggs: 3 corações escondidos
+  const achados = new Set();
+  const toast = document.getElementById('toast');
+  const contador = document.getElementById('contador');
+  let tt;
+
+  function chuva(qtd) {
     for (let i = 0; i < qtd; i++) {
       const s = document.createElement('span');
-      s.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      s.style.left = Math.random() * 100 + '%';
-      s.style.fontSize = 16 + Math.random() * 22 + 'px';
-      s.style.animationDuration = 3 + Math.random() * 3 + 's';
-      s.style.animationDelay = Math.random() * 1.2 + 's';
-      box.appendChild(s);
-      setTimeout(() => s.remove(), 7500);
+      s.textContent = ['💍', '💙', '🩵', '✨'][i % 4];
+      s.style.cssText = 'position:fixed;top:-2rem;z-index:60;pointer-events:none;left:' + Math.random() * 100 + 'vw;font-size:' + (18 + Math.random() * 20) + 'px;transition:transform ' + (3 + Math.random() * 2) + 's linear;';
+      document.body.appendChild(s);
+      requestAnimationFrame(() => requestAnimationFrame(() => { s.style.transform = 'translateY(110vh) rotate(40deg)'; }));
+      setTimeout(() => s.remove(), 5500);
     }
   }
 
-  // conversa: cada mensagem aparece depois de "digitando..."
-  const msgs = [...document.querySelectorAll('#conversa .msg')];
-  const status = document.querySelector('.topo small');
-  let i = 0, terminou = false, timer;
-
-  function terminar() {
-    if (terminou) return;
-    terminou = true;
-    clearTimeout(timer);
-    document.querySelectorAll('.digitando').forEach((d) => d.remove());
-    msgs.forEach((m) => { m.hidden = false; });
-    status.textContent = 'online';
-    chuva(25);
-    $('pular').hidden = true;
-    $('depois').hidden = false;
-    setTimeout(() => $('depois').scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
-  }
-
-  function proxima() {
-    if (terminou) return;
-    if (i >= msgs.length) return terminar();
-    const dots = document.createElement('div');
-    dots.className = 'digitando';
-    dots.innerHTML = '<i></i><i></i><i></i>';
-    msgs[i].before(dots);
-    const tam = msgs[i].textContent.length;
-    timer = setTimeout(() => {
-      dots.remove();
-      msgs[i].hidden = false;
-      msgs[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
-      i++;
-      timer = setTimeout(proxima, 500);
-    }, Math.min(700 + tam * 18, 1800));
-  }
-
-  const reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  $('pular').addEventListener('click', terminar);
-  if (reduz) terminar(); else proxima();
-
-  // easter egg: toca 5 vezes na foto de perfil do topo
-  let toques = 0, t2;
-  $('segredo').addEventListener('click', () => {
-    toques++;
-    clearTimeout(t2);
-    t2 = setTimeout(() => { toques = 0; }, 1500);
-    if (toques >= 5) {
-      toques = 0;
-      $('modal').hidden = false;
-      chuva(50);
-    }
+  document.querySelectorAll('.segredo').forEach((b) => {
+    b.addEventListener('click', () => {
+      const msg = b.dataset.msg;
+      b.classList.add('achado');
+      toast.textContent = msg;
+      toast.classList.add('mostra');
+      clearTimeout(tt);
+      tt = setTimeout(() => toast.classList.remove('mostra'), 3200);
+      achados.add(msg);
+      contador.textContent = achados.size + ' de 3 encontrados';
+      if (achados.size === 3) {
+        setTimeout(() => { document.getElementById('modal').hidden = false; if (!reduz) chuva(40); }, 900);
+      }
+    });
   });
-  $('fechar').addEventListener('click', () => { $('modal').hidden = true; });
+  document.getElementById('fechar').addEventListener('click', () => { document.getElementById('modal').hidden = true; });
 })();
